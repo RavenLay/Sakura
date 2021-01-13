@@ -1,7 +1,6 @@
 package ui;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -9,33 +8,32 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class Choice extends Application {
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         //设置窗体最大化
         stage.setMaximized(true);
 
         BorderPane root = new BorderPane();
-        root.setCenter(new ImageView(new Image("image/Sakura1.png")));
+        ImageView imageView = new ImageView(new Image(this.getClass().getResourceAsStream("/image/Sakura0.gif")));
+        root.setCenter(imageView);
+        root.setStyle("-fx-background:transparent;");
 
         Scene scene = new Scene(root);
         scene.setFill(null);
 
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                if (keyEvent.getCode() == KeyCode.ESCAPE){
-                    stage.close();
-                }
+        scene.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.ESCAPE){
+                stage.close();
             }
         });
         //设置选项按钮
@@ -66,24 +64,52 @@ public class Choice extends Application {
         HBox hBox = new HBox();
         hBox.getChildren().addAll(vBox1,vBox2);
         hBox.setAlignment(Pos.CENTER);
-
+        //设置按钮布局
         root.setLeft(vBox1);
         root.setRight(vBox2);
-
-        btn1.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                Text text = new Text();
-                try {
-                    text.start(new Stage());
-                    stage.hide();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        //设置点击打开文本编辑器
+        btn1.setOnMouseClicked(mouseEvent -> {
+            Text text = new Text();
+            try {
+                text.start(new Stage());
+                stage.hide();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
+        //绘线
+        Line line = new Line(540,325,325,325);
+        line.setStroke(Color.PINK);
+        line.setStrokeWidth(10);
+        Line line1 = new Line(540,425,325,425);
+        line1.setStroke(Color.PINK);
+        line1.setStrokeWidth(10);
+        Line line2 = new Line(540,525,325,525);
+        line2.setStroke(Color.PINK);
+        line2.setStrokeWidth(10);
+        Line line3 = new Line(1110,325,1325,325);
+        line3.setStroke(Color.PINK);
+        line3.setStrokeWidth(10);
+        Line line4 = new Line(1110,425,1325,425);
+        line4.setStroke(Color.PINK);
+        line4.setStrokeWidth(10);
+        Line line5 = new Line(1110,525,1325,525);
+        line5.setStroke(Color.PINK);
+        line5.setStrokeWidth(10);
+        Line line6 = new Line(540,325,540,525);
+        line6.setStroke(Color.PINK);
+        line6.setStrokeWidth(10);
+        Line line7 = new Line(1110,325,1110,525);
+        line7.setStroke(Color.PINK);
+        line7.setStrokeWidth(10);
+        Line line8 = new Line(540,425,740,425);
+        line8.setStroke(Color.PINK);
+        line8.setStrokeWidth(10);
+        Line line9 = new Line(1110,425,940,425);
+        line9.setStroke(Color.PINK);
+        line9.setStrokeWidth(10);
+        root.getChildren().addAll(line,line1,line2,line3,line4,line5,line6,line7,line8,line9);
 
-        stage.setOpacity(0.75);
         stage.setScene(scene);
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.show();

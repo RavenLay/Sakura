@@ -11,7 +11,7 @@ public class File {
     public static void  openFile(){
 
     }
-    //保存文件
+    //保存文件(为加密文件后缀名.Sakura)
     public static void savaFile(){
 
     }
