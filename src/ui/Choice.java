@@ -11,8 +11,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -77,6 +75,7 @@ public class Choice extends Application {
                 e.printStackTrace();
             }
         });
+        /*
         //绘线
         Line line = new Line(540,325,325,325);
         line.setStroke(Color.PINK);
@@ -109,6 +108,8 @@ public class Choice extends Application {
         line9.setStroke(Color.PINK);
         line9.setStrokeWidth(10);
         root.getChildren().addAll(line,line1,line2,line3,line4,line5,line6,line7,line8,line9);
+
+         */
 
         stage.setScene(scene);
         stage.initStyle(StageStyle.TRANSPARENT);
